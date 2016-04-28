@@ -65,7 +65,7 @@ public class ColorPicker {
 		else if(color == 'P')
 			g.setColor(Color.magenta);		//purple
 		else if(color == 'E')
-			g.setColor(Color.gray);
+			g.setColor(Color.lightGray);
 		else if(color == 'K')
 			g.setColor(Color.pink);
 		g.fillRect(x, y, 16, 16);

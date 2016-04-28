@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class BackEnd
 {
-	//'E' => grey
+	//'E' => light grey
 	//'K' => pink
 	final static char colors[] = {'R', 'O', 'Y', 'G', 'B', 'P', 'E', 'K'};
 	

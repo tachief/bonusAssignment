@@ -1,15 +1,23 @@
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
+import java.io.File;
+import java.io.IOException;
 
 public class GameBoard {
+	final static Color PERU = new Color(205, 133, 63);
+	final static Color SIENNA = new Color(160, 82, 45); 
 	
 	private static int hintSize = 10;
 	private static int pegSize = 16;
 	private static int pegWidth = 24;
 	private static int startX = 25;
-	private static int startY = 75;
+	private static int startY = 60;
 	
 	static void drawBoard(char[][] pegs, char[][] hints, int guesses, int size, Graphics g){
+		g.setColor(PERU);
+		g.fillRect(0, 0, 400, 600);
 		for(int i = 0; i < guesses; i++){
 			for (int j = 0; j < size; j++){
 				drawPeg(startX + j*27,startY + i*35, pegs[i][j], g);
@@ -17,9 +25,14 @@ public class GameBoard {
 						startY + 15*(j/(size/2 + size%2)) + 35*i, hints[i][j], g);	
 			}
 		}
+		Font f = new Font("Test", Font.BOLD, 30);
+		g.setFont(f);
+		g.drawString("Master Mind", 95, 40);
 	}
 	
 	static void drawHint(int x, int y, char color, Graphics g){
+		g.setColor(SIENNA);
+		g.fillOval(x, y, hintSize, hintSize);
 		if(color == 'B')
 			g.setColor(Color.black);
 		else if(color == 'W')
@@ -33,6 +46,8 @@ public class GameBoard {
 	}
 	
 	static void drawPeg(int x, int y, char color, Graphics g){
+		g.setColor(SIENNA);
+		g.fillRoundRect(x, y, pegSize, pegWidth, 50, 50);
 		if(color == 'R')
 			g.setColor(Color.red);
 		else if(color == 'O')
@@ -46,7 +61,7 @@ public class GameBoard {
 		else if(color == 'P')
 			g.setColor(Color.magenta);		//purple
 		else if(color == 'E')
-			g.setColor(Color.gray);
+			g.setColor(Color.lightGray);
 		else if(color == 'K')
 			g.setColor(Color.pink);
 		if(color != 'X')
