@@ -47,7 +47,7 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 
 	private void initComponents() {				
 		 setSize(400, 600); // size of screen
-	     setDefaultCloseOperation(EXIT_ON_CLOSE);   
+	     setDefaultCloseOperation(EXIT_ON_CLOSE); 
 	     screen = new GameScreen();
 	     
 	     add(screen); //adds it to our MindMatrixDriver Frame
@@ -67,6 +67,7 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 		
 		 public GameScreen() {
 	            setPreferredSize(new Dimension(400, 600));
+	            this.addMouseListener(MasterMindDriver.this);
 	            
 	            //buttons and options
 	            SpinnerNumberModel sizeModel = new SpinnerNumberModel(4,4,8,1);
@@ -142,10 +143,56 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 	            }
 	        }		
 	}
+	
+	public static boolean inUpTriangle(int[] x, int[] y, int pX, int pY){
+		int slope = 2;
+		if(x[0] < pX && pX < x[1]){
+			if(y[0] > pY && pY > (y[1] - (pX - x[0])*slope)){
+				return true;
+			}
+			
+		} else if(x[1] < pX && pX < x[2]){
+			if(y[1] < pY && pY > (y[0] + (pX - x[0])*slope)){
+				return true;
+			}
+		}
+		
+		return false;
+		
+	}
+	
+	public static boolean inDownTriangle(int[] x, int[] y, int pX, int pY){
+		int slope = 2;
+		
+		if(x[0] < pX && pX < x[1]){
+			if(y[0] < pY && pY < (y[1] + (pX - x[0])*slope)){
+				return true;
+			}
+			
+		} else if(x[1] < pX && pX < x[2]){
+			if(y[1] > pY && pY < (y[0] - (pX - x[0])*slope)){
+				return true;
+			}
+		}
+		
+		return false;
+		
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
+		if(start){
+			for (int i = 0; i < size; i++) {
+				int[] triangleX = { 20 + 35 * i - 3, 30 + 35 * i + 1, 40 + 35 * i + 11 };
+				int[] triangleUpY = { 510 - 6, 510 - 8 - 15, 510 - 6 };
+				int[] triangleDownY = { 510 + 16, 510 + 16 + 13, 510 + 16 };
+				if (inUpTriangle(triangleX, triangleUpY, e.getX(), e.getY())) {
+					System.out.println("Up Triangle " + i);
+				} else if (inDownTriangle(triangleX, triangleDownY, e.getX(), e.getY())) {
+					System.out.println("Down Triangle " + i);
+				}
+			}
+		}
 		
 	}
 	@Override
