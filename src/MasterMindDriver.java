@@ -31,6 +31,7 @@ public class MasterMindDriver extends JFrame{
 	 int size = 4; //amount of pegs you need to match
 	 int colorNum = 6; //amount of colors
 	 boolean start = false;
+	 int turn = 0;
 	 
 	MasterMindDriver(){
 		initComponents();
@@ -96,6 +97,7 @@ public class MasterMindDriver extends JFrame{
 	                    guesses = (Integer)guessSpinner.getValue();
 	                    colorNum = (Integer)colorSpinner.getValue();
 	                    start = true;
+	                    turn = 0;
 	                    remove(sizeSpinner);
 	                    remove(guessSpinner);
 	                    remove(colorSpinner);
@@ -107,6 +109,7 @@ public class MasterMindDriver extends JFrame{
 	                    pegs = new char[guesses][size];
 	            		hints = new char[guesses][size];
 	            		ColorPicker.initColors(size);
+	            		BackEnd.generateCode(size, colorNum);
 	            		
 	            		for(int i = 0; i < guesses; i ++){
 	            			for (int j = 0; j < size; j++){
@@ -123,8 +126,30 @@ public class MasterMindDriver extends JFrame{
 		           	 
 	                public void actionPerformed(ActionEvent e)
 	                {
+	                	
+	                	char[] guess = new char[size];
+	                	
 	                    System.out.println("Entered");
-	            		//repaint();
+	                    for(int i = 0; i < size; i++){
+	                    	pegs[turn][i] = ColorPicker.color[i];
+	                    	guess[i] = ColorPicker.color[i];
+	                    }
+	                    
+	                    char[] feedback = BackEnd.calculateResult(guess);
+	                    
+	                    for(int i = 0; i < size; i++){
+	                    	hints[turn][i] = feedback[i];
+	                    }
+	                    
+	                    turn = (turn+1)%guesses;
+	                    
+	                    //TODO victory
+	                    
+	                    if (turn == 0){
+	                    	//TODO Faliure
+	                    }
+	                    
+	            		repaint();
 	                }
 	            }); 
 	        }		 	

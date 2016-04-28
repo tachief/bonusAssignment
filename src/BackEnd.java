@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.util.Random;
 
 public class BackEnd
@@ -7,9 +6,9 @@ public class BackEnd
 	//'K' => pink
 	final static char colors[] = {'R', 'O', 'Y', 'G', 'B', 'P', 'E', 'K'};
 	
-	private char[] code;
+	private static char[] code;
 	
-	public void generateCode(int codeSize, int colorSize)
+	public static void generateCode(int codeSize, int colorSize)
 	{
 		
 		char[] code = new char[codeSize];
@@ -18,8 +17,9 @@ public class BackEnd
 			Random rand = new Random();
 			int randomInt = rand.nextInt(colorSize);
 			code[i] = colors[randomInt];
+			System.out.println(code[i]);
 		}
-		this.code = code;
+		BackEnd.code = code;
 	}
 	
 //	public boolean isValidInput(String input)
@@ -61,13 +61,17 @@ public class BackEnd
 //		return true;
 //	}
 	
-	public char[] calculateResult(char guessArray[])
+	public static char[] calculateResult(char guessArray[])
 	{
 		//TODO
 		int codeSize = code.length;
 		char[] result = new char[code.length];
-		char[] codeArray = this.code;
+		char[] codeArray = code;
 		int index = 0;
+		
+		for(int i = 0;  i < code.length; i++){
+			result[i] = 'X';
+		}
 
 		for(int i = 0; i < codeSize; i++)
 		{

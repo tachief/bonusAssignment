@@ -6,7 +6,7 @@ public class ColorPicker {
 
 	
 	private static int triangleSize = 20;
-	private static char[] color;
+	public static char[] color;
 	private static int startX = 20;
 	private static int startY = 510;
 	
