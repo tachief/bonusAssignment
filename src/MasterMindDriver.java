@@ -48,7 +48,7 @@ public class MasterMindDriver extends JFrame{
 	}
 
 	private void initComponents() {				
-		 setSize(400, 600); // size of screen
+		 setSize(500, 700); // size of screen
 	     setDefaultCloseOperation(EXIT_ON_CLOSE); 
 	     screen = new GameScreen();
 	     
@@ -90,8 +90,14 @@ public class MasterMindDriver extends JFrame{
 	            add(colorSpinner); 
 	            add(begin);
 	            add(enter);
+	            add(reset);
+	            add(mainMenu);
 	            enter.setEnabled(false);
 	            enter.setVisible(false);
+	            reset.setVisible(false);
+	            reset.setEnabled(false);
+	            mainMenu.setVisible(false);
+	            mainMenu.setEnabled(false);
 	            
 	            
 	            begin.addActionListener(new ActionListener() {
@@ -103,12 +109,21 @@ public class MasterMindDriver extends JFrame{
 	                    colorNum = (Integer)colorSpinner.getValue();
 	                    start = true;
 	                    turn = 0;
-	                    remove(sizeSpinner);
-	                    remove(guessSpinner);
-	                    remove(colorSpinner);
-	                    remove(begin);
+	                    
+	                    sizeSpinner.setVisible(false);
+	                    sizeSpinner.setEnabled(false);
+	                    guessSpinner.setVisible(false);
+	                    guessSpinner.setEnabled(false);
+	                    colorSpinner.setVisible(false);
+	                    colorSpinner.setEnabled(false);
+	                    begin.setVisible(false);
+	                    begin.setEnabled(false);
 	                    enter.setVisible(true);
 	                    enter.setEnabled(true);
+	                    reset.setVisible(true);
+	    	            reset.setEnabled(true);
+	    	            mainMenu.setVisible(true);
+	    	            mainMenu.setEnabled(true);
 	                    
 	                  //initialize all spaces
 	                    pegs = new char[guesses][size];
@@ -166,6 +181,51 @@ public class MasterMindDriver extends JFrame{
 					}
 	                }
 	            }); 
+	            mainMenu.addActionListener(new ActionListener() {
+		           	 
+	                public void actionPerformed(ActionEvent e)
+	                {
+	                	
+	                	//reinitialize important variables
+	                	start = false;	 
+	                	winner = 0;
+	                	
+	                	//reset the view
+	                	sizeSpinner.setVisible(true);
+	                    sizeSpinner.setEnabled(true);
+	                    guessSpinner.setVisible(true);
+	                    guessSpinner.setEnabled(true);
+	                    colorSpinner.setVisible(true);
+	                    colorSpinner.setEnabled(true);
+	                    begin.setVisible(true);
+	                    begin.setEnabled(true);
+	                    enter.setVisible(false);
+	                    enter.setEnabled(false);
+	                    reset.setVisible(false);
+	    	            reset.setEnabled(false);
+	    	            mainMenu.setVisible(false);
+	    	            mainMenu.setEnabled(false);
+	    	            
+	    	            repaint(); //repaint
+	                }
+	            }); 
+	            reset.addActionListener(new ActionListener() {
+		           	 
+	                public void actionPerformed(ActionEvent e)
+	                {
+	                	winner = 0;
+	                	//initialize to no answer and hints given
+	                	for(int i = 0; i < guesses; i ++){
+	            			for (int j = 0; j < size; j++){
+	            				pegs[i][j] = 'X';  	// X means no peg color chosen yet
+	            				hints[i][j] = 'X';	// X means no hint given yet
+	            			}
+	            		}
+	                	BackEnd.generateCode(size, colorNum);//new code
+	                	turn = 0; //reset turn to 0
+	                	repaint(); //paint everything again
+	                }
+	            }); 
 	        }		 	
          
 	        @Override
@@ -182,6 +242,8 @@ public class MasterMindDriver extends JFrame{
 					}
 		            ColorPicker.drawColorPicker(size, g);
 		            enter.setLocation(305, 500);
+		            reset.setLocation(305, 50);
+		            mainMenu.setLocation(95, 50);
 		            if(winner == -1){
 		            	System.out.println("loser");
 		            } else if (winner == 1){
