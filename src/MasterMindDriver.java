@@ -1,4 +1,5 @@
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -253,6 +254,7 @@ public class MasterMindDriver extends JFrame{
 	            }
 	            else{ //beginning screen
 	            	
+	            	g.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 	            	g.drawString("Welcome To", 0, 0);
 	            	//TODO Cool MasterMind
 	            	g.drawString("The computer will think of a secret code", 0, 10);
@@ -275,15 +277,15 @@ public class MasterMindDriver extends JFrame{
 //When entering guesses you only need to enter the first character of each color as a capital letter.
 	            	
 	            	
-	            	g.drawString("Size: ", 100, 414);
-	            	g.drawString("Guesses: ", 100, 449);
-	            	g.drawString("Colors: ", 100, 484);
+	            	g.drawString("Size: ", 100, 474);
+	            	g.drawString("Guesses: ", 100, 509);
+	            	g.drawString("Colors: ", 100, 544);
 
 	            	
-	            	sizeSpinner.setLocation(200, 400);
-	                guessSpinner.setLocation(200, 435);
-	                colorSpinner.setLocation(200, 470);
-	                begin.setLocation(300,500);   
+	            	sizeSpinner.setLocation(200, 460);
+	                guessSpinner.setLocation(200, 495);
+	                colorSpinner.setLocation(200, 530);
+	                begin.setLocation(300,560);   
 	                
 	            }
 	        }	
