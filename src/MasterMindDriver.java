@@ -118,6 +118,15 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 	            		repaint();
 	                }
 	            });   
+	            
+	            enter.addActionListener(new ActionListener() {
+		           	 
+	                public void actionPerformed(ActionEvent e)
+	                {
+	                    System.out.println("Entered");
+	            		//repaint();
+	                }
+	            }); 
 	        }		 	
          
 	        @Override
@@ -197,6 +206,7 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 				int[] triangleDownY = { 510 + 16, 510 + 16 + 13, 510 + 16 };
 				if (inUpTriangle(triangleX, triangleUpY, e.getX(), e.getY())) {
 					System.out.println("Up Triangle " + i);
+					
 				} else if (inDownTriangle(triangleX, triangleDownY, e.getX(), e.getY())) {
 					System.out.println("Down Triangle " + i);
 				}
