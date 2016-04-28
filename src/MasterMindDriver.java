@@ -32,6 +32,7 @@ public class MasterMindDriver extends JFrame{
 	 int colorNum = 6; //amount of colors
 	 boolean start = false;
 	 int turn = 0;
+	 int winner = 0; //0 -> game not done 1->winner 2-> loser
 	 
 	MasterMindDriver(){
 		initComponents();
@@ -64,6 +65,8 @@ public class MasterMindDriver extends JFrame{
 		JSpinner colorSpinner;
 		JButton begin;
 		JButton enter;
+		JButton reset;
+		JButton mainMenu;
 		
 		
 		 public GameScreen() {
@@ -79,6 +82,8 @@ public class MasterMindDriver extends JFrame{
 	            colorSpinner = new JSpinner(colorModel);
 	            begin = new JButton("Start!");
 	            enter = new JButton("Enter");
+	            reset = new JButton("Reset");
+	            mainMenu = new JButton("Back To Menu");
 	                        
 	            add(sizeSpinner);
 	            add(guessSpinner);
@@ -126,30 +131,39 @@ public class MasterMindDriver extends JFrame{
 		           	 
 	                public void actionPerformed(ActionEvent e)
 	                {
-	                	
-	                	char[] guess = new char[size];
-	                	
-	                    System.out.println("Entered");
-	                    for(int i = 0; i < size; i++){
-	                    	pegs[turn][i] = ColorPicker.color[i];
-	                    	guess[i] = ColorPicker.color[i];
-	                    }
-	                    
-	                    char[] feedback = BackEnd.calculateResult(guess);
-	                    
-	                    for(int i = 0; i < size; i++){
-	                    	hints[turn][i] = feedback[i];
-	                    }
-	                    
-	                    turn = (turn+1)%guesses;
-	                    
-	                    //TODO victory
-	                    
-	                    if (turn == 0){
-	                    	//TODO Faliure
-	                    }
-	                    
-	            		repaint();
+					if (winner == 0) {
+						char[] guess = new char[size];
+
+						System.out.println("Entered");
+						for (int i = 0; i < size; i++) {
+							pegs[turn][i] = ColorPicker.color[i];
+							guess[i] = ColorPicker.color[i];
+						}
+
+						char[] feedback = BackEnd.calculateResult(guess);
+
+						for (int i = 0; i < size; i++) {
+							hints[turn][i] = feedback[i];
+						}
+
+						turn = (turn + 1) % guesses;
+
+						for (int i = 0; i < size; i++) {
+							if (feedback[i] == 'B') {
+								winner = 1;
+							} else {
+								winner = 0;
+								break;
+							}
+						}
+
+						if (turn == 0) {
+
+							winner = -1;
+						}
+
+						repaint();
+					}
 	                }
 	            }); 
 	        }		 	
@@ -160,9 +174,19 @@ public class MasterMindDriver extends JFrame{
 	            System.out.println("repainted");
 	            //g.clearRect(0, 0, 400, 600);
 	            if(start){
-		            GameBoard.drawBoard(pegs, hints, guesses, size, g);
+		            try {
+						GameBoard.drawBoard(pegs, hints, guesses, size, g);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 		            ColorPicker.drawColorPicker(size, g);
 		            enter.setLocation(305, 500);
+		            if(winner == -1){
+		            	System.out.println("loser");
+		            } else if (winner == 1){
+		            	System.out.println("winner");
+		            }
 		            
 	            }
 	            else{ //beginning screen
@@ -225,7 +249,7 @@ public class MasterMindDriver extends JFrame{
 
 	    	@Override
 	    	public void mouseClicked(MouseEvent e) {
-	    		if(start){
+	    		if(start && winner == 0){
 	    			for (int i = 0; i < size; i++) {
 	    				int[] triangleX = { 20 + 35 * i - 3, 30 + 35 * i + 1, 40 + 35 * i + 11 };
 	    				int[] triangleUpY = { 510 - 6, 510 - 8 - 15, 510 - 6 };
