@@ -2,10 +2,11 @@ import java.util.Random;
 
 public class BackEnd
 {
-	private char[] code;
-	//'Y' => grey
+	//'E' => grey
 	//'K' => pink
-	private char colors[] = {'R', 'O', 'Y', 'G', 'B', 'P', 'Y', 'K'};
+	final static char colors[] = {'R', 'O', 'Y', 'G', 'B', 'P', 'E', 'K'};
+	
+	private char[] code;
 	
 	public void generateCode(int codeSize, int colorSize)
 	{

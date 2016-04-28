@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class GameBoard {
@@ -20,10 +21,35 @@ public class GameBoard {
 	
 	static void drawHint(int x, int y, char color, Graphics g){
 		g.drawOval(x, y, hintSize, hintSize);
+		if(color == 'B')
+			g.setColor(Color.black);
+		else if(color == 'W')
+			g.setColor(Color.white);
+		g.fillOval(x, y, hintSize, hintSize);
+		
+		
 	}
 	
 	static void drawPeg(int x, int y, char color, Graphics g){
 		g.drawRoundRect(x, y, pegSize, pegWidth, 50, 50);
+		if(color == 'R')
+			g.setColor(Color.red);
+		else if(color == 'O')
+			g.setColor(Color.orange);
+		else if(color == 'Y')
+			g.setColor(Color.yellow);
+		else if(color == 'G')
+			g.setColor(Color.green);
+		else if(color == 'B')
+			g.setColor(Color.blue);
+		else if(color == 'P')
+			g.setColor(Color.magenta);		//purple
+		else if(color == 'E')
+			g.setColor(Color.gray);
+		else if(color == 'K')
+			g.setColor(Color.pink);
+		g.fillRoundRect(x, y, pegSize, pegWidth, 50, 50);
+		
 	}
 	
 }
