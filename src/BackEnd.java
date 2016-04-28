@@ -8,11 +8,14 @@ public class BackEnd
 		int whitePegs;
 	}
 	
+	//History will be taken cared of by GUI
 	final static String HISTORY = "history";
 	
 	private String code = "";
 	private int codeSize = 4;
-	private char colors[] = {'R', 'O', 'Y', 'G', 'B', 'I', 'P'};
+	//'X' => grey
+	//'Z' => pink
+	private char colors[] = {'R', 'O', 'Y', 'G', 'B', 'P', 'X', 'Z'};
 	
 	public void generateCode()
 	{
@@ -68,6 +71,13 @@ public class BackEnd
 		
 		return true;
 	}
+	/*
+	 * TODO: I will filling a char array called hints
+	 * 'B' => black peg
+	 * 'W' => white peg
+	 * arguments: guess array, hints array, size, color amount
+	 */
+	
 	
 	public void calculateResult(String guess, String code)
 	{
