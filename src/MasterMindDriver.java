@@ -41,11 +41,12 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 
 	public static void main(String[] args) {
 		System.out.println("Hello World");
-		new MasterMindDriver().setVisible(true);		
+		new MasterMindDriver().setVisible(true);	
 		
 	}
+
 	private void initComponents() {				
-		 setSize(800, 600); // size of screen
+		 setSize(400, 600); // size of screen
 	     setDefaultCloseOperation(EXIT_ON_CLOSE);   
 	     screen = new GameScreen();
 	     
@@ -61,10 +62,11 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 		JSpinner guessSpinner;
 		JSpinner colorSpinner;
 		JButton begin;
+		JButton enter;
 		
 		
 		 public GameScreen() {
-	            setPreferredSize(new Dimension(800, 600));
+	            setPreferredSize(new Dimension(400, 600));
 	            
 	            //buttons and options
 	            SpinnerNumberModel sizeModel = new SpinnerNumberModel(4,4,8,1);
@@ -74,12 +76,16 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 	            guessSpinner = new JSpinner(guessModel);
 	            colorSpinner = new JSpinner(colorModel);
 	            begin = new JButton("Start!");
-	           
+	            enter = new JButton("Enter");
 	                        
 	            add(sizeSpinner);
 	            add(guessSpinner);
 	            add(colorSpinner); 
 	            add(begin);
+	            add(enter);
+	            enter.setEnabled(false);
+	            enter.setVisible(false);
+	            
 	            
 	            begin.addActionListener(new ActionListener() {
 	           	 
@@ -93,6 +99,8 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 	                    remove(guessSpinner);
 	                    remove(colorSpinner);
 	                    remove(begin);
+	                    enter.setVisible(true);
+	                    enter.setEnabled(true);
 	                    
 	                  //initialize all spaces
 	                    pegs = new char[guesses][size];
@@ -117,6 +125,8 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 	            if(start){
 		            GameBoard.drawBoard(pegs, hints, guesses, size, g);
 		            ColorPicker.drawColorPicker(size, g);
+		            enter.setLocation(305, 500);
+
 	            }
 	            else{ //beginning screen
 	            	g.drawString("Size: ", 50, 260);

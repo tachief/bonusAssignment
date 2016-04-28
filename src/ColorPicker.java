@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
 
@@ -7,7 +8,7 @@ public class ColorPicker {
 	private static int triangleSize = 20;
 	private static char[] color;
 	private static int startX = 20;
-	private static int startY = 520;
+	private static int startY = 510;
 	
 	static void initColors(int size){
 			color = new char[size];
@@ -51,10 +52,29 @@ public class ColorPicker {
 	}
 	
 	static void drawColor(int x, int y, char color, Graphics g){
-		g.drawRect(x, y, 16, 16);	
+		if(color == 'R')
+			g.setColor(Color.red);
+		else if(color == 'O')
+			g.setColor(Color.orange);
+		else if(color == 'Y')
+			g.setColor(Color.yellow);
+		else if(color == 'G')
+			g.setColor(Color.green);
+		else if(color == 'B')
+			g.setColor(Color.blue);
+		else if(color == 'P')
+			g.setColor(Color.magenta);		//purple
+		else if(color == 'E')
+			g.setColor(Color.gray);
+		else if(color == 'K')
+			g.setColor(Color.pink);
+		g.fillRect(x, y, 16, 16);
+		g.setColor(Color.black);
+		g.drawRect(x, y, 16, 16);
 	}
 	
 	static void drawPolygon(Polygon poly, Graphics g){
+		g.setColor(Color.black);
 		g.fillPolygon(poly);
 	}
 	

@@ -20,18 +20,19 @@ public class GameBoard {
 	}
 	
 	static void drawHint(int x, int y, char color, Graphics g){
-		g.drawOval(x, y, hintSize, hintSize);
 		if(color == 'B')
 			g.setColor(Color.black);
 		else if(color == 'W')
 			g.setColor(Color.white);
-		g.fillOval(x, y, hintSize, hintSize);
+		if(color != 'X')
+			g.fillOval(x, y, hintSize, hintSize);
+		g.setColor(Color.black);
+		g.drawOval(x, y, hintSize, hintSize);
 		
 		
 	}
 	
 	static void drawPeg(int x, int y, char color, Graphics g){
-		g.drawRoundRect(x, y, pegSize, pegWidth, 50, 50);
 		if(color == 'R')
 			g.setColor(Color.red);
 		else if(color == 'O')
@@ -48,8 +49,10 @@ public class GameBoard {
 			g.setColor(Color.gray);
 		else if(color == 'K')
 			g.setColor(Color.pink);
-		g.fillRoundRect(x, y, pegSize, pegWidth, 50, 50);
-		
+		if(color != 'X')
+			g.fillRoundRect(x, y, pegSize, pegWidth, 50, 50);
+		g.setColor(Color.black);
+		g.drawRoundRect(x, y, pegSize, pegWidth, 50, 50);
 	}
 	
 }
