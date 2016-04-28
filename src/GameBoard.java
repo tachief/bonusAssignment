@@ -64,7 +64,7 @@ public class GameBoard {
 		else if(color == 'E')
 			g.setColor(Color.lightGray);
 		else if(color == 'K')
-			g.setColor(Color.pink);
+			g.setColor(Color.pink.darker());
 		if(color != 'X')
 			g.fillRoundRect(x, y, pegSize, pegWidth, 50, 50);
 		g.setColor(Color.black);

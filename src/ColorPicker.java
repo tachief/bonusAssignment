@@ -27,10 +27,12 @@ public class ColorPicker {
 				if(change == -1 && i == 0)
 				{
 					color[index] = BackEnd.colors[colorNum - 1];
+					break;
 				}
 				else
 				{
 					color[index] = BackEnd.colors[(i + change) % colorNum];
+					break;
 				}
 				
 			}
@@ -87,7 +89,7 @@ public class ColorPicker {
 		else if(color == 'E')
 			g.setColor(Color.lightGray);
 		else if(color == 'K')
-			g.setColor(Color.pink);
+			g.setColor(Color.pink.darker());
 		g.fillRect(x, y, 16, 16);
 		g.setColor(Color.black);
 		g.drawRect(x, y, 16, 16);
