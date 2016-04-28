@@ -18,6 +18,18 @@ public class ColorPicker {
 		
 	}
 	
+	static void colorChange(int index, int change, int colorNum)
+	{
+		for(int i = 0; i < colorNum; i ++)
+		{
+			if(color[index] == BackEnd.colors[i])
+			{	
+				color[index] = BackEnd.colors[(i + change) % colorNum];
+			}
+		}
+		
+	}
+	
 	static void drawColorPicker(int size, Graphics g){
 		Polygon upTriangle;
 		Polygon downTriangle;

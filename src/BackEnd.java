@@ -68,6 +68,10 @@ public class BackEnd
 	 * arguments: guess array, hints array, size, color amount
 	 */
 	
+	public int getCodeSize()
+	{
+		return code.length;
+	}
 	
 	public char[] calculateResult(char guessArray[])
 	{
