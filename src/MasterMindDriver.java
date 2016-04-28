@@ -83,7 +83,7 @@ public class MasterMindDriver extends JFrame{
 	            begin = new JButton("Start!");
 	            enter = new JButton("Enter");
 	            reset = new JButton("Reset");
-	            mainMenu = new JButton("Back To Menu");
+	            mainMenu = new JButton("Menu");
 	                        
 	            add(sizeSpinner);
 	            add(guessSpinner);
@@ -242,8 +242,8 @@ public class MasterMindDriver extends JFrame{
 					}
 		            ColorPicker.drawColorPicker(size, g);
 		            enter.setLocation(305, 500);
-		            reset.setLocation(305, 50);
-		            mainMenu.setLocation(95, 50);
+		            reset.setLocation(410, 10);
+		            mainMenu.setLocation(10, 10);
 		            if(winner == -1){
 		            	System.out.println("loser");
 		            } else if (winner == 1){
@@ -252,6 +252,29 @@ public class MasterMindDriver extends JFrame{
 		            
 	            }
 	            else{ //beginning screen
+	            	
+	            	g.drawString("Welcome To", 0, 0);
+	            	//TODO Cool MasterMind
+	            	g.drawString("The computer will think of a secret code", 0, 10);
+	            	g.drawString("You try to guess what colored pegs are in the code and what order they are", 0, 25);
+	            	g.drawString("After you make a guess the result (feedback) will be displayed.", 0, 40);
+	            	g.drawString("The result consists of a black peg for each peg you have guessed exactly correct (color and position)", 0,55);
+	            	g.drawString("your guess. For each peg in the guess that is the correct color, but is out of position, you get a white peg", 0, 70);
+	            	g.drawString("You can choose the amount of pegs you need to choose with Size", 0, 85);
+	            	g.drawString("the amount of different colors available with Colors", 0, 100);
+	            	g.drawString("and the amount of guesses available to seceed in Guesses options below", 0, 115);
+//This is a text version of the classic board game Mastermind.
+//The computer will think of a secret code. The code consists of 4 colored pegs.
+//The pegs may be one of six colors: blue, green, orange, purple, red, or yellow. A color may appear
+//more than once in the code. 
+//in. After you make a valid guess the result (feedback) will be displayed.
+//The result consists of a black peg for each peg you have guessed exactly correct (color and position) in
+//your guess. For each peg in the guess that is the correct color, but is out of position, you get a white
+//peg. For each peg, which is fully incorrect, you get no feedback.
+//Only the first letter of the color is displayed. B for Blue, R for Red, and so forth.
+//When entering guesses you only need to enter the first character of each color as a capital letter.
+	            	
+	            	
 	            	g.drawString("Size: ", 100, 414);
 	            	g.drawString("Guesses: ", 100, 449);
 	            	g.drawString("Colors: ", 100, 484);
