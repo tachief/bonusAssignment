@@ -23,7 +23,7 @@ import javax.swing.JPanel;
  * 
  */
 
-public class MasterMindDriver extends JFrame implements MouseListener{
+public class MasterMindDriver extends JFrame{
 	 JPanel screen;
 	 char pegs[][];
 	 char hints[][];
@@ -56,7 +56,7 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 	public void startGame(){
 	}
 	
-	class GameScreen extends JPanel {
+	class GameScreen extends JPanel implements MouseListener {
 		
 		JSpinner sizeSpinner;
 		JSpinner guessSpinner;
@@ -67,7 +67,7 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 		
 		 public GameScreen() {
 	            setPreferredSize(new Dimension(400, 600));
-	            this.addMouseListener(MasterMindDriver.this);
+	            this.addMouseListener(this);
 	            
 	            //buttons and options
 	            SpinnerNumberModel sizeModel = new SpinnerNumberModel(4,4,8,1);
@@ -132,6 +132,8 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 	        @Override
 	        public void paintComponent(Graphics g) {
 	            super.paintComponent(g);
+	            System.out.println("repainted");
+	            //g.clearRect(0, 0, 400, 600);
 	            if(start){
 		            GameBoard.drawBoard(pegs, hints, guesses, size, g);
 		            ColorPicker.drawColorPicker(size, g);
@@ -150,88 +152,94 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 	                begin.setLocation(300,500);   
 	                
 	            }
-	        }		
-	}
-	
-	public static boolean inUpTriangle(int[] x, int[] y, int pX, int pY){
-		int slope = 2;
-		
-		if(y[0] < pY || pY < y[1]){
-			return false;
-		}
-		
-		if(x[0] < pX && pX < x[1]){
-			if(y[0] > pY && pY > (y[1] - (pX - x[0])*slope)){
-				return true;
-			}
-			
-		} else if(x[1] < pX && pX < x[2]){
-			if(y[1] < pY && pY > (y[0] + (pX - x[0])*slope)){
-				return true;
-			}
-		}
-		
-		return false;
-		
-	}
-	
-	public static boolean inDownTriangle(int[] x, int[] y, int pX, int pY){
-		int slope = 2;
-		
-		if(y[0] > pY || pY > y[1]){
-			return false;
-		}
-		
-		if(x[0] < pX && pX < x[1]){
-			if(y[0] < pY && pY < (y[1] + (pX - x[0])*slope)){
-				return true;
-			}
-			
-		} else if(x[1] < pX && pX < x[2]){
-			if(y[1] > pY && pY < (y[0] - (pX - x[0])*slope)){
-				return true;
-			}
-		}
-		
-		return false;
-		
-	}
+	        }	
+	        
+	        public boolean inUpTriangle(int[] x, int[] y, int pX, int pY){
+	    		int slope = 2;
+	    		
+	    		if(y[0] < pY || pY < y[1]){
+	    			return false;
+	    		}
+	    		
+	    		if(x[0] < pX && pX < x[1]){
+	    			if(y[0] > pY && pY > (y[1] - (pX - x[0])*slope)){
+	    				return true;
+	    			}
+	    			
+	    		} else if(x[1] < pX && pX < x[2]){
+	    			if(y[1] < pY && pY > (y[0] + (pX - x[0])*slope)){
+	    				return true;
+	    			}
+	    		}
+	    		
+	    		return false;
+	    		
+	    	}
+	    	
+	    	public boolean inDownTriangle(int[] x, int[] y, int pX, int pY){
+	    		int slope = 2;
+	    		
+	    		if(y[0] > pY || pY > y[1]){
+	    			return false;
+	    		}
+	    		
+	    		if(x[0] < pX && pX < x[1]){
+	    			if(y[0] < pY && pY < (y[1] + (pX - x[0])*slope)){
+	    				return true;
+	    			}
+	    			
+	    		} else if(x[1] < pX && pX < x[2]){
+	    			if(y[1] > pY && pY < (y[0] - (pX - x[0])*slope)){
+	    				return true;
+	    			}
+	    		}
+	    		
+	    		return false;
+	    		
+	    	}
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		if(start){
-			for (int i = 0; i < size; i++) {
-				int[] triangleX = { 20 + 35 * i - 3, 30 + 35 * i + 1, 40 + 35 * i + 11 };
-				int[] triangleUpY = { 510 - 6, 510 - 8 - 15, 510 - 6 };
-				int[] triangleDownY = { 510 + 16, 510 + 16 + 13, 510 + 16 };
-				if (inUpTriangle(triangleX, triangleUpY, e.getX(), e.getY())) {
-					System.out.println("Up Triangle " + i);
-					
-				} else if (inDownTriangle(triangleX, triangleDownY, e.getX(), e.getY())) {
-					System.out.println("Down Triangle " + i);
-				}
-			}
-		}
-		
+	    	@Override
+	    	public void mouseClicked(MouseEvent e) {
+	    		if(start){
+	    			for (int i = 0; i < size; i++) {
+	    				int[] triangleX = { 20 + 35 * i - 3, 30 + 35 * i + 1, 40 + 35 * i + 11 };
+	    				int[] triangleUpY = { 510 - 6, 510 - 8 - 15, 510 - 6 };
+	    				int[] triangleDownY = { 510 + 16, 510 + 16 + 13, 510 + 16 };
+	    				if (inUpTriangle(triangleX, triangleUpY, e.getX(), e.getY())) {
+	    					System.out.println("Up Triangle " + i);
+	    					ColorPicker.colorChange(i, 1, colorNum);
+	    					repaint();
+	    					
+	    				} else if (inDownTriangle(triangleX, triangleDownY, e.getX(), e.getY())) {
+	    					System.out.println("Down Triangle " + i);
+	    					ColorPicker.colorChange(i, -1, colorNum);
+	    					repaint();
+	    				}
+	    			}
+	    		}
+	    		
+	    	}
+	    	@Override
+	    	public void mouseEntered(MouseEvent e) {
+	    		// TODO Auto-generated method stub
+	    		
+	    	}
+	    	@Override
+	    	public void mouseExited(MouseEvent e) {
+	    		// TODO Auto-generated method stub
+	    		
+	    	}
+	    	@Override
+	    	public void mousePressed(MouseEvent e) {
+	    		// TODO Auto-generated method stub
+	    		
+	    	}
+	    	@Override
+	    	public void mouseReleased(MouseEvent e) {
+	    		// TODO Auto-generated method stub
+	    		
+	    	}
+	        
 	}
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
