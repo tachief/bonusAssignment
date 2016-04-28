@@ -51,7 +51,6 @@ public class GameBoard {
 			g.setColor(Color.pink);
 		if(color != 'X')
 			g.fillRoundRect(x, y, pegSize, pegWidth, 50, 50);
-		
 		g.setColor(Color.black);
 		g.drawRoundRect(x, y, pegSize, pegWidth, 50, 50);
 	}
