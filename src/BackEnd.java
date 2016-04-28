@@ -2,8 +2,7 @@ import java.util.Random;
 
 public class BackEnd
 {
-	
-	private String code = "";
+	private char[] code;
 	//'Y' => grey
 	//'K' => pink
 	private char colors[] = {'R', 'O', 'Y', 'G', 'B', 'P', 'Y', 'K'};
@@ -11,17 +10,14 @@ public class BackEnd
 	public void generateCode(int codeSize, int colorSize)
 	{
 		
-		String code = "";
+		char[] code = new char[codeSize];
 		for(int i = 0; i < codeSize; i++)
 		{
 			Random rand = new Random();
 			int randomInt = rand.nextInt(colorSize);
-			code += colors[randomInt];
-			
+			code[i] = colors[randomInt];
 		}
-		
 		this.code = code;
-		
 	}
 	
 //	public boolean isValidInput(String input)
@@ -71,10 +67,12 @@ public class BackEnd
 	 */
 	
 	
-	public char[] calculateResult(char guessArray[], char codeArray[], int codeSize)
+	public char[] calculateResult(char guessArray[])
 	{
 		//TODO
-		char result[] = new char[codeSize];
+		int codeSize = code.length;
+		char[] result = new char[code.length];
+		char[] codeArray = this.code;
 		int index = 0;
 
 		for(int i = 0; i < codeSize; i++)
@@ -98,7 +96,7 @@ public class BackEnd
 				if(guessArray[i] == codeArray[j])
 				{
 					guessArray[i] = '-';
-					codeArray[i] = '-';
+					codeArray[j] = '-';
 					result[index] = 'W';
 					index++;
 					break;
