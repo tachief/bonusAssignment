@@ -2,29 +2,20 @@ import java.util.Random;
 
 public class BackEnd
 {
-	class Result
-	{
-		int blackPegs;
-		int whitePegs;
-	}
-	
-	//History will be taken cared of by GUI
-	final static String HISTORY = "history";
 	
 	private String code = "";
-	private int codeSize = 4;
-	//'X' => grey
-	//'Z' => pink
-	private char colors[] = {'R', 'O', 'Y', 'G', 'B', 'P', 'X', 'Z'};
+	//'Y' => grey
+	//'K' => pink
+	private char colors[] = {'R', 'O', 'Y', 'G', 'B', 'P', 'Y', 'K'};
 	
-	public void generateCode()
+	public void generateCode(int codeSize, int colorSize)
 	{
 		
 		String code = "";
 		for(int i = 0; i < codeSize; i++)
 		{
 			Random rand = new Random();
-			int randomInt = rand.nextInt(colors.length);
+			int randomInt = rand.nextInt(colorSize);
 			code += colors[randomInt];
 			
 		}
@@ -33,44 +24,45 @@ public class BackEnd
 		
 	}
 	
-	public boolean isValidInput(String input)
-	{
-		if(!input.equals(HISTORY) && input.length() > codeSize)
-			return false;
-		
-		return true;
-	}
+//	public boolean isValidInput(String input)
+//	{
+//		if(input.length() > codeSize)
+//			return false;
+//		
+//		return true;
+//	}
+//	
+//	public boolean isValidGuess(String guess)
+//	{
+//		
+//		if(guess.length() > codeSize)
+//			return false;
+//		for(int i = 0; i < codeSize; i++)
+//		{
+//			if(!isValidColor(guess.charAt(i)))
+//			{
+//				return false;
+//			}
+//		}
+//		
+//		return true;
+//	}
+//	
+//	public boolean isValidColor(char guess)
+//	{
+//		
+//		int check = 0;
+//		for(int i = 0; i < colors.length; i++)
+//		{
+//			if(guess == colors[i])
+//				check = 1;
+//		}
+//		if(check == 0)
+//			return false;
+//		
+//		return true;
+//	}
 	
-	public boolean isValidGuess(String guess)
-	{
-		
-		if(guess.length() > codeSize)
-			return false;
-		for(int i = 0; i < codeSize; i++)
-		{
-			if(!isValidColor(guess.charAt(i)))
-			{
-				return false;
-			}
-		}
-		
-		return true;
-	}
-	
-	public boolean isValidColor(char guess)
-	{
-		
-		int check = 0;
-		for(int i = 0; i < colors.length; i++)
-		{
-			if(guess == colors[i])
-				check = 1;
-		}
-		if(check == 0)
-			return false;
-		
-		return true;
-	}
 	/*
 	 * TODO: I will filling a char array called hints
 	 * 'B' => black peg
@@ -79,20 +71,20 @@ public class BackEnd
 	 */
 	
 	
-	public void calculateResult(String guess, String code)
+	public char[] calculateResult(char guessArray[], char codeArray[], int codeSize)
 	{
 		//TODO
-		int blackPegs = 0;
-		int whitePegs = 0;
-		char guessArray[] = guess.toCharArray();
-		char codeArray[] = code.toCharArray();
+		char result[] = new char[codeSize];
+		int index = 0;
+
 		for(int i = 0; i < codeSize; i++)
 		{
 			if(guessArray[i] == codeArray[i])
 			{
 				guessArray[i] = '-';
 				codeArray[i] = '-';
-				blackPegs++;
+				result[index] = 'B';
+				index++;
 			}
 		}
 		for(int i = 0; i < codeSize; i++)
@@ -107,13 +99,13 @@ public class BackEnd
 				{
 					guessArray[i] = '-';
 					codeArray[i] = '-';
-					whitePegs++;
+					result[index] = 'W';
+					index++;
 					break;
 				}
 			}	
 		}
-		//Still need to return number of each peg to make result
 		
-		
+		return result;
 	}
 }
