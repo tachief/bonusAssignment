@@ -61,18 +61,6 @@ public class BackEnd
 //		return true;
 //	}
 	
-	/*
-	 * TODO: I will filling a char array called hints
-	 * 'B' => black peg
-	 * 'W' => white peg
-	 * arguments: guess array, hints array, size, color amount
-	 */
-	
-	public int getCodeSize()
-	{
-		return code.length;
-	}
-	
 	public char[] calculateResult(char guessArray[])
 	{
 		//TODO
