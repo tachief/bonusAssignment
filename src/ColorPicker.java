@@ -85,11 +85,11 @@ public class ColorPicker {
 		else if(color == 'B')
 			g.setColor(Color.blue);
 		else if(color == 'P')
-			g.setColor(Color.magenta);		//purple
+			g.setColor(GameBoard.PURPLE);		//purple
 		else if(color == 'E')
 			g.setColor(Color.lightGray);
 		else if(color == 'K')
-			g.setColor(Color.pink.darker());
+			g.setColor(GameBoard.PINK);
 		g.fillRect(x, y, 16, 16);
 		g.setColor(Color.black);
 		g.drawRect(x, y, 16, 16);

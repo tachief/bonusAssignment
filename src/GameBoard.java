@@ -8,6 +8,8 @@ import java.io.IOException;
 public class GameBoard {
 	final static Color PERU = new Color(205, 133, 63);
 	final static Color SIENNA = new Color(160, 82, 45); 
+	final static Color PURPLE = new Color(160, 32, 240);
+	final static Color PINK = new Color(255, 20, 247);
 	
 	private static int hintSize = 10;
 	private static int pegSize = 16;
@@ -60,11 +62,11 @@ public class GameBoard {
 		else if(color == 'B')
 			g.setColor(Color.blue);
 		else if(color == 'P')
-			g.setColor(Color.magenta);		//purple
+			g.setColor(PURPLE);		//purple
 		else if(color == 'E')
 			g.setColor(Color.lightGray);
 		else if(color == 'K')
-			g.setColor(Color.pink.darker());
+			g.setColor(PINK);
 		if(color != 'X')
 			g.fillRoundRect(x, y, pegSize, pegWidth, 50, 50);
 		g.setColor(Color.black);

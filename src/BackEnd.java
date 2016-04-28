@@ -66,7 +66,12 @@ public class BackEnd
 		//TODO
 		int codeSize = code.length;
 		char[] result = new char[code.length];
-		char[] codeArray = code;
+		char[] codeArray = new char[code.length];
+		for(int i = 0; i < code.length; i++)
+		{
+			codeArray[i] = code[i];
+		}
+		
 		int index = 0;
 		
 		for(int i = 0;  i < code.length; i++){
