@@ -166,14 +166,14 @@ public class MasterMindDriver extends JFrame{
 		            
 	            }
 	            else{ //beginning screen
-	            	g.drawString("Size: ", 50, 260);
-	            	g.drawString("Guesses: ", 50, 310);
-	            	g.drawString("Colors: ", 50, 360);
+	            	g.drawString("Size: ", 100, 414);
+	            	g.drawString("Guesses: ", 100, 449);
+	            	g.drawString("Colors: ", 100, 484);
 
 	            	
-	            	sizeSpinner.setLocation(150, 250);
-	                guessSpinner.setLocation(150, 300);
-	                colorSpinner.setLocation(150, 350);
+	            	sizeSpinner.setLocation(200, 400);
+	                guessSpinner.setLocation(200, 435);
+	                colorSpinner.setLocation(200, 470);
 	                begin.setLocation(300,500);   
 	                
 	            }
