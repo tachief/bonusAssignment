@@ -126,7 +126,7 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 		            GameBoard.drawBoard(pegs, hints, guesses, size, g);
 		            ColorPicker.drawColorPicker(size, g);
 		            enter.setLocation(305, 500);
-		            //help
+		            
 	            }
 	            else{ //beginning screen
 	            	g.drawString("Size: ", 50, 260);
