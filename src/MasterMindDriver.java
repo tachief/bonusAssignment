@@ -2,6 +2,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
@@ -21,7 +23,7 @@ import javax.swing.JPanel;
  * 
  */
 
-public class MasterMindDriver extends JFrame{
+public class MasterMindDriver extends JFrame implements MouseListener{
 	 JPanel screen;
 	 char pegs[][];
 	 char hints[][];
@@ -44,7 +46,7 @@ public class MasterMindDriver extends JFrame{
 	}
 	private void initComponents() {				
 		 setSize(800, 600); // size of screen
-	     setDefaultCloseOperation(EXIT_ON_CLOSE);    
+	     setDefaultCloseOperation(EXIT_ON_CLOSE);   
 	     screen = new GameScreen();
 	     
 	     add(screen); //adds it to our MindMatrixDriver Frame
@@ -95,6 +97,7 @@ public class MasterMindDriver extends JFrame{
 	                  //initialize all spaces
 	                    pegs = new char[guesses][size];
 	            		hints = new char[guesses][size];
+	            		ColorPicker.initColors(size);
 	            		
 	            		for(int i = 0; i < guesses; i ++){
 	            			for (int j = 0; j < size; j++){
@@ -113,6 +116,7 @@ public class MasterMindDriver extends JFrame{
 	            super.paintComponent(g);
 	            if(start){
 		            GameBoard.drawBoard(pegs, hints, guesses, size, g);
+		            ColorPicker.drawColorPicker(size, g);
 	            }
 	            else{ //beginning screen
 	            	g.drawString("Size: ", 50, 260);
@@ -127,5 +131,31 @@ public class MasterMindDriver extends JFrame{
 	                
 	            }
 	        }		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+		
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
