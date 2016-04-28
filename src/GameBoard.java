@@ -25,6 +25,7 @@ public class GameBoard {
 						startY + 15*(j/(size/2 + size%2)) + 35*i, hints[i][j], g);	
 			}
 		}
+		
 		Font f = new Font("Test", Font.BOLD, 30);
 		g.setFont(f);
 		g.drawString("Master Mind", 95, 40);
