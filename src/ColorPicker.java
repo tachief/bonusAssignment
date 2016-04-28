@@ -24,7 +24,15 @@ public class ColorPicker {
 		{
 			if(color[index] == BackEnd.colors[i])
 			{	
-				color[index] = BackEnd.colors[(i + change) % colorNum];
+				if(change == -1 && i == 0)
+				{
+					color[index] = BackEnd.colors[colorNum - 1];
+				}
+				else
+				{
+					color[index] = BackEnd.colors[(i + change) % colorNum];
+				}
+				
 			}
 		}
 		
