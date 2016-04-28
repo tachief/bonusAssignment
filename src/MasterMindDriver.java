@@ -146,6 +146,11 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 	
 	public static boolean inUpTriangle(int[] x, int[] y, int pX, int pY){
 		int slope = 2;
+		
+		if(y[0] < pY || pY < y[1]){
+			return false;
+		}
+		
 		if(x[0] < pX && pX < x[1]){
 			if(y[0] > pY && pY > (y[1] - (pX - x[0])*slope)){
 				return true;
@@ -163,6 +168,10 @@ public class MasterMindDriver extends JFrame implements MouseListener{
 	
 	public static boolean inDownTriangle(int[] x, int[] y, int pX, int pY){
 		int slope = 2;
+		
+		if(y[0] > pY || pY > y[1]){
+			return false;
+		}
 		
 		if(x[0] < pX && pX < x[1]){
 			if(y[0] < pY && pY < (y[1] + (pX - x[0])*slope)){
