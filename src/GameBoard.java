@@ -12,6 +12,8 @@ public class GameBoard {
 	final static Color SIENNA = new Color(160, 82, 45); 
 	final static Color PURPLE = new Color(160, 32, 240);
 	final static Color PINK = new Color(255, 20, 247);
+	final static Color NEW_ORANGE = new Color(255, 165, 0);
+	final static Color NEW_GREEN = new Color(69, 178, 69);
 	
 	private static int hintSize = 10;
 	private static int pegSize = 16;
@@ -59,11 +61,11 @@ public class GameBoard {
 		if(color == 'R')
 			g.setColor(Color.red);
 		else if(color == 'O')
-			g.setColor(Color.orange);
+			g.setColor(NEW_ORANGE);
 		else if(color == 'Y')
 			g.setColor(Color.yellow);
 		else if(color == 'G')
-			g.setColor(Color.green);
+			g.setColor(NEW_GREEN);
 		else if(color == 'B')
 			g.setColor(Color.blue);
 		else if(color == 'P')

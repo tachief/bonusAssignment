@@ -77,11 +77,11 @@ public class ColorPicker {
 		if(color == 'R')
 			g.setColor(Color.red);
 		else if(color == 'O')
-			g.setColor(Color.orange);
+			g.setColor(GameBoard.NEW_ORANGE);
 		else if(color == 'Y')
 			g.setColor(Color.yellow);
 		else if(color == 'G')
-			g.setColor(Color.green);
+			g.setColor(GameBoard.NEW_GREEN);
 		else if(color == 'B')
 			g.setColor(Color.blue);
 		else if(color == 'P')
