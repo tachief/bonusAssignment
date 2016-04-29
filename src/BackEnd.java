@@ -6,7 +6,7 @@ public class BackEnd
 	//'K' => pink
 	final static char colors[] = {'R', 'O', 'Y', 'G', 'B', 'P', 'E', 'K'};
 	
-	private static char[] code;
+	public static char[] code;
 	
 	public static void generateCode(int codeSize, int colorSize)
 	{

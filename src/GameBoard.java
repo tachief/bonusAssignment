@@ -114,4 +114,12 @@ public class GameBoard {
 	    g.drawString("Welcome To", 75, 40);
 	    g.drawString("Master Mind", 75, 80);
 	}
+	static void printSolution(Graphics g, int size, int guesses){
+		for(int i = 0; i < size; i++){
+			drawPeg(startX + i*27,startY + guesses*35, BackEnd.code[i], g);
+		}
+		
+		
+	}
+	
 }

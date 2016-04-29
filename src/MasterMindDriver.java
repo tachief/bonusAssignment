@@ -28,7 +28,7 @@ public class MasterMindDriver extends JFrame{
 	 JPanel screen;
 	 char pegs[][];
 	 char hints[][];
-	 int guesses = 12; //amount of guesses you have
+	 static int guesses = 12; //amount of guesses you have
 	 int size = 4; //amount of pegs you need to match
 	 int colorNum = 6; //amount of colors
 	 boolean start = false;
@@ -249,6 +249,7 @@ public class MasterMindDriver extends JFrame{
 		            if(winner == -1){
 		            	try {
 							GameBoard.printLoser(g);
+							GameBoard.printSolution(g, size, guesses);
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
