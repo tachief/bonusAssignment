@@ -32,10 +32,10 @@ public class GameBoard {
 		File fontFile = new File("Halo.ttf");
 	    FileInputStream in = new FileInputStream(fontFile);
 	    Font halo = Font.createFont(Font.TRUETYPE_FONT, in);
-	    Font halo30Pt = halo.deriveFont(30f);
-		Font f = new Font("Test", Font.BOLD, 30);
-		g.setFont(halo30Pt);
-		g.drawString("Master Mind", 95, 40);
+	    Font halo40Pt = halo.deriveFont(40f);
+		g.setFont(halo40Pt);
+		
+		g.drawString("Master Mind", 40, 40);
 	}
 	
 	static void drawHint(int x, int y, char color, Graphics g){
@@ -78,4 +78,15 @@ public class GameBoard {
 		g.drawRoundRect(x, y, pegSize, pegWidth, 50, 50);
 	}
 	
+	static void printWinnner(Graphics g)
+	{
+		g.setFont(new Font("Default", Font.BOLD, 30));
+		g.drawString("Congratulations! You've won!", 10, 20);
+	}
+	
+	static void printLoser(Graphics g)
+	{
+		g.setFont(new Font("Default", Font.BOLD, 30));
+		g.drawString("Someone call wambulance, you've lost!", 10, 20);
+	}
 }
