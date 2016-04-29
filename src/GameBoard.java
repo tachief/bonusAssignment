@@ -112,6 +112,6 @@ public class GameBoard {
 	    Font halo40Pt = halo.deriveFont(40f);
 	    g.setFont(halo40Pt);
 	    g.drawString("Welcome To", 75, 40);
-	    g.drawString("Master Mind", 75, 90);
+	    g.drawString("Master Mind", 75, 80);
 	}
 }
