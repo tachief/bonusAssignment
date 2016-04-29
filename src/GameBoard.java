@@ -87,8 +87,8 @@ public class GameBoard {
 		g.setFont(halo40Pt);
 		g.setColor(PERU);
 		g.fillRect(0, 0, 500, 40);
-		g.setColor(Color.green.darker());
-		g.drawString("SUCCESS", 10, 40);
+		g.setColor(Color.white);
+		g.drawString("SUCCESS", 60, 40);
 		
 	}
 	
@@ -101,7 +101,7 @@ public class GameBoard {
 		g.setFont(halo40Pt);
 		g.setColor(PERU);
 		g.fillRect(0, 0, 500, 40);
-		g.setColor(Color.red);
+		g.setColor(Color.red.darker());
 		g.drawString("FAILURE", 10, 40);
 	}
 }
