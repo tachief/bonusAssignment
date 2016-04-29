@@ -88,7 +88,7 @@ public class GameBoard {
 		g.setColor(PERU);
 		g.fillRect(0, 0, 500, 40);
 		g.setColor(Color.white);
-		g.drawString("SUCCESS", 75, 40);
+		g.drawString("SUCCESS", 90, 40);
 	}
 	
 	static void printLoser(Graphics g) throws Exception
@@ -100,7 +100,18 @@ public class GameBoard {
 		g.setFont(halo40Pt);
 		g.setColor(PERU);
 		g.fillRect(0, 0, 500, 40);
-		g.setColor(Color.red.darker());
-		g.drawString("FAILURE", 75, 40);
+		g.setColor(Color.red);
+		g.drawString("FAILURE", 90, 40);
+	}
+	
+	static void printMasterMind(Graphics g) throws Exception
+	{
+		File fontFile = new File("Halo.ttf");
+	    FileInputStream in = new FileInputStream(fontFile);
+	    Font halo = Font.createFont(Font.TRUETYPE_FONT, in);
+	    Font halo40Pt = halo.deriveFont(40f);
+	    g.setFont(halo40Pt);
+	    g.drawString("Welcome To", 75, 40);
+	    g.drawString("Master Mind", 75, 90);
 	}
 }
