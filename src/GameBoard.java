@@ -88,7 +88,7 @@ public class GameBoard {
 		g.setColor(PERU);
 		g.fillRect(0, 0, 500, 40);
 		g.setColor(Color.white);
-		g.drawString("SUCCESS", 60, 40);
+		g.drawString("SUCCESS", 75, 40);
 	}
 	
 	static void printLoser(Graphics g) throws Exception
@@ -101,6 +101,6 @@ public class GameBoard {
 		g.setColor(PERU);
 		g.fillRect(0, 0, 500, 40);
 		g.setColor(Color.red.darker());
-		g.drawString("FAILURE", 60, 40);
+		g.drawString("FAILURE", 75, 40);
 	}
 }
