@@ -3,6 +3,8 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class GameBoard {
@@ -17,7 +19,7 @@ public class GameBoard {
 	private static int startX = 25;
 	private static int startY = 60;
 	
-	static void drawBoard(char[][] pegs, char[][] hints, int guesses, int size, Graphics g){
+	static void drawBoard(char[][] pegs, char[][] hints, int guesses, int size, Graphics g) throws Exception{
 		g.setColor(PERU);
 		g.fillRect(0, 0, 400, 600);
 		for(int i = 0; i < guesses; i++){
@@ -27,9 +29,12 @@ public class GameBoard {
 						startY + 15*(j/(size/2 + size%2)) + 35*i, hints[i][j], g);	
 			}
 		}
-		
-		Font f = new Font("Test", Font.BOLD, 30);
-		g.setFont(f);
+		File fontFile = new File("Halo.ttf");
+	    FileInputStream in = new FileInputStream(fontFile);
+	    Font halo = Font.createFont(Font.TRUETYPE_FONT, in);
+	    Font halo30Pt = halo.deriveFont(30f);
+		//Font f = new Font("Test", Font.BOLD, 30);
+		g.setFont(halo30Pt);
 		g.drawString("Master Mind", 95, 40);
 	}
 	
