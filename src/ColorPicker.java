@@ -100,6 +100,14 @@ public class ColorPicker {
 		g.fillPolygon(poly);
 	}
 	
+	static void drawExample(int x, int y, Graphics g){
+		Polygon upTriangle = makeUpTriangle(x,y);
+		Polygon downTriangle = makeDownTriangle(x,y + 24);
+		drawPolygon(upTriangle, g);
+		drawPolygon(downTriangle, g);
+		drawColor(x + 2,y + 3,'B',g);
+		
+	}
 	
 	
 }

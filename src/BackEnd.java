@@ -17,7 +17,6 @@ public class BackEnd
 			Random rand = new Random();
 			int randomInt = rand.nextInt(colorSize);
 			code[i] = colors[randomInt];
-			System.out.println(code[i]);
 		}
 		BackEnd.code = code;
 	}
