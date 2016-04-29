@@ -17,18 +17,25 @@ public class ColorPicker {
 		}
 		
 	}
-	
+	/**
+	 * 
+	 * @param index	index of colorPicker to change
+	 * @param change either +1 or -1
+	 * @param colorNum	how many colors there are
+	 */
 	static void colorChange(int index, int change, int colorNum)
 	{
 		for(int i = 0; i < colorNum; i ++)
 		{
 			if(color[index] == BackEnd.colors[i])
 			{	
+				//avoids having a negative value
 				if(change == -1 && i == 0)
 				{
 					color[index] = BackEnd.colors[colorNum - 1];
 					break;
 				}
+				//default case
 				else
 				{
 					color[index] = BackEnd.colors[(i + change) % colorNum];
@@ -40,6 +47,11 @@ public class ColorPicker {
 		
 	}
 	
+	/**
+	 * Draws the color picker construct
+	 * @param size	how many color pickers to draw
+	 * @param g	how it draws
+	 */
 	static void drawColorPicker(int size, Graphics g){
 		Polygon upTriangle;
 		Polygon downTriangle;
@@ -53,6 +65,12 @@ public class ColorPicker {
 		
 	}
 	
+	/**
+	 * constructs color picker up arrows
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	static Polygon makeUpTriangle(int x, int y){
 		Polygon poly;
 		int[] xPos = {x,x + triangleSize/2, x + triangleSize};
@@ -63,6 +81,12 @@ public class ColorPicker {
 		return poly;
 	}
 	
+	/**
+	 * constructs color picker down arrows
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	static Polygon makeDownTriangle(int x, int y){
 		Polygon poly;
 		int[] xPos = {x,x + triangleSize/2, x + triangleSize};
@@ -72,7 +96,13 @@ public class ColorPicker {
 		
 		return poly;
 	}
-	
+	/**
+	 * draws current color of a color picker
+	 * @param x 
+	 * @param y
+	 * @param color char representation of color
+	 * @param g
+	 */
 	static void drawColor(int x, int y, char color, Graphics g){
 		if(color == 'R')
 			g.setColor(Color.red);
@@ -95,11 +125,22 @@ public class ColorPicker {
 		g.drawRect(x, y, 16, 16);
 	}
 	
+	/**
+	 * Draws the polgon in black
+	 * @param poly
+	 * @param g
+	 */
 	static void drawPolygon(Polygon poly, Graphics g){
 		g.setColor(Color.black);
 		g.fillPolygon(poly);
 	}
 	
+	/**
+	 * Draws an example color picker
+	 * @param x
+	 * @param y
+	 * @param g
+	 */
 	static void drawExample(int x, int y, Graphics g){
 		Polygon upTriangle = makeUpTriangle(x,y);
 		Polygon downTriangle = makeDownTriangle(x,y + 24);

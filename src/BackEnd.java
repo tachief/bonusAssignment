@@ -8,6 +8,11 @@ public class BackEnd
 	
 	public static char[] code;
 	
+	/**
+	 * Generates random code based off inputs
+	 * @param codeSize how big the code is
+	 * @param colorSize highest amount of colors code will have
+	 */
 	public static void generateCode(int codeSize, int colorSize)
 	{
 		
@@ -21,45 +26,11 @@ public class BackEnd
 		BackEnd.code = code;
 	}
 	
-//	public boolean isValidInput(String input)
-//	{
-//		if(input.length() > codeSize)
-//			return false;
-//		
-//		return true;
-//	}
-//	
-//	public boolean isValidGuess(String guess)
-//	{
-//		
-//		if(guess.length() > codeSize)
-//			return false;
-//		for(int i = 0; i < codeSize; i++)
-//		{
-//			if(!isValidColor(guess.charAt(i)))
-//			{
-//				return false;
-//			}
-//		}
-//		
-//		return true;
-//	}
-//	
-//	public boolean isValidColor(char guess)
-//	{
-//		
-//		int check = 0;
-//		for(int i = 0; i < colors.length; i++)
-//		{
-//			if(guess == colors[i])
-//				check = 1;
-//		}
-//		if(check == 0)
-//			return false;
-//		
-//		return true;
-//	}
-	
+	/**
+	 * Algorithm to calculate how many black and white pegs result from guess
+	 * @param guessArray the guess the user has made
+	 * @return char[] with 'B'(s) and 'W'(s)
+	 */
 	public static char[] calculateResult(char guessArray[])
 	{
 		//TODO
@@ -74,9 +45,10 @@ public class BackEnd
 		int index = 0;
 		
 		for(int i = 0;  i < code.length; i++){
-			result[i] = 'X';
+			result[i] = 'X';	//avoids null pointer exception
 		}
-
+		//each guess peg can only generate one black or white peg
+		//Calculates black pegs (pegs correct in position and color)
 		for(int i = 0; i < codeSize; i++)
 		{
 			if(guessArray[i] == codeArray[i])
@@ -87,6 +59,7 @@ public class BackEnd
 				index++;
 			}
 		}
+		//Calculates white pegs (pegs correct in color only)
 		for(int i = 0; i < codeSize; i++)
 		{
 			if(guessArray[i] == '-')
