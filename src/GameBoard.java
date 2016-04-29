@@ -111,8 +111,8 @@ public class GameBoard {
 	    Font halo = Font.createFont(Font.TRUETYPE_FONT, in);
 	    Font halo40Pt = halo.deriveFont(40f);
 	    g.setFont(halo40Pt);
-	    g.drawString("Welcome To", 75, 40);
-	    g.drawString("Master Mind", 75, 80);
+	    g.drawString("Welcome To", 98, 40);
+	    g.drawString("Master Mind", 90, 80);
 	}
 	static void printSolution(Graphics g, int size, int guesses){
 		for(int i = 0; i < size; i++){

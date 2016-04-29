@@ -272,17 +272,18 @@ public class MasterMindDriver extends JFrame{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-	            	g.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+	            	g.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
 
-	            	//TODO Cool MasterMind
-	            	g.drawString("The computer will think of a secret code", 0, 120);
-	            	g.drawString("You try to guess what colored pegs are in the code and what order they are", 0, 140);
-	            	g.drawString("After you make a guess the result (feedback) will be displayed.", 0, 160);
-	            	g.drawString("The result consists of a black peg for each peg you have guessed exactly correct (color and position)", 0,180);
-	            	g.drawString("your guess. For each peg in the guess that is the correct color, but is out of position, you get a white peg", 0, 200);
-	            	g.drawString("You can choose the amount of pegs you need to choose with Size", 0, 220);
-	            	g.drawString("the amount of different colors available with Colors", 0, 240);
-	            	g.drawString("and the amount of guesses available to seceed in Guesses options below", 0, 250);
+	            	
+	            	g.drawString("The computer will think of a secret code. You will try to guess", 5, 120);
+	            	g.drawString("what colored pegs are in the code and what order they are in.", 5, 140);
+	            	g.drawString("After you make a guess, the result will be displayed. The result", 5, 160);
+	            	g.drawString("consists of a black peg for each peg that you have guessed the", 5,180);
+	            	g.drawString("correct position and color and a white peg for each peg that is", 5, 200);
+	            	g.drawString("the correct color, but not the correct position. You can set the", 5, 220);
+	            	g.drawString("number of pegs with Size, the amount of different colors with", 5, 240);
+	            	g.drawString("Colors and the amount of guesses allowed in Guesses. These", 5, 260);
+	            	g.drawString("options are available below.", 5, 280);
 //This is a text version of the classic board game Mastermind.
 //The computer will think of a secret code. The code consists of 4 colored pegs.
 //The pegs may be one of six colors: blue, green, orange, purple, red, or yellow. A color may appear
