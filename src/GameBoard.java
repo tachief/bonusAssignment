@@ -101,7 +101,7 @@ public class GameBoard {
 		g.setColor(PERU);
 		g.fillRect(0, 0, 500, 40);
 		g.setColor(Color.red);
-		g.drawString("FAILURE", 110, 40);
+		g.drawString("FAILURE", 112, 40);
 	}
 	
 	static void printMasterMind(Graphics g) throws Exception
