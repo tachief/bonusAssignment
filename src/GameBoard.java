@@ -21,7 +21,7 @@ public class GameBoard {
 	
 	static void drawBoard(char[][] pegs, char[][] hints, int guesses, int size, Graphics g) throws Exception{
 		g.setColor(PERU);
-		g.fillRect(0, 0, 400, 600);
+		g.fillRect(0, 0, 500, 700);
 		for(int i = 0; i < guesses; i++){
 			for (int j = 0; j < size; j++){
 				drawPeg(startX + j*27,startY + i*35, pegs[i][j], g);
@@ -35,7 +35,7 @@ public class GameBoard {
 	    Font halo40Pt = halo.deriveFont(40f);
 		g.setFont(halo40Pt);
 		
-		g.drawString("Master Mind", 40, 40);
+		g.drawString("Master Mind", 85, 40);
 	}
 	
 	static void drawHint(int x, int y, char color, Graphics g){
@@ -78,15 +78,30 @@ public class GameBoard {
 		g.drawRoundRect(x, y, pegSize, pegWidth, 50, 50);
 	}
 	
-	static void printWinnner(Graphics g)
+	static void printWinnner(Graphics g) throws Exception
 	{
-		g.setFont(new Font("Default", Font.BOLD, 30));
-		g.drawString("Congratulations! You've won!", 10, 20);
+		File fontFile = new File("Halo.ttf");
+	    FileInputStream in = new FileInputStream(fontFile);
+	    Font halo = Font.createFont(Font.TRUETYPE_FONT, in);
+	    Font halo40Pt = halo.deriveFont(40f);
+		g.setFont(halo40Pt);
+		g.setColor(PERU);
+		g.fillRect(0, 0, 500, 40);
+		g.setColor(Color.green.darker());
+		g.drawString("SUCCESS", 10, 40);
+		
 	}
 	
-	static void printLoser(Graphics g)
+	static void printLoser(Graphics g) throws Exception
 	{
-		g.setFont(new Font("Default", Font.BOLD, 30));
-		g.drawString("Someone call wambulance, you've lost!", 10, 20);
+		File fontFile = new File("Halo.ttf");
+	    FileInputStream in = new FileInputStream(fontFile);
+	    Font halo = Font.createFont(Font.TRUETYPE_FONT, in);
+	    Font halo40Pt = halo.deriveFont(40f);
+		g.setFont(halo40Pt);
+		g.setColor(PERU);
+		g.fillRect(0, 0, 500, 40);
+		g.setColor(Color.red);
+		g.drawString("FAILURE", 10, 40);
 	}
 }
