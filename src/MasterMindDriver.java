@@ -233,7 +233,8 @@ public class MasterMindDriver extends JFrame{
 	        public void paintComponent(Graphics g) {
 	            super.paintComponent(g);
 	            System.out.println("repainted");
-	            //g.clearRect(0, 0, 400, 600);
+	            
+	            g.clearRect(0, 0, 500, 700);
 	            if(start){
 		            try {
 						GameBoard.drawBoard(pegs, hints, guesses, size, g);
@@ -242,29 +243,45 @@ public class MasterMindDriver extends JFrame{
 						e.printStackTrace();
 					}
 		            ColorPicker.drawColorPicker(size, g);
-		            enter.setLocation(305, 500);
+		            enter.setLocation(365, 530);
 		            reset.setLocation(410, 10);
 		            mainMenu.setLocation(10, 10);
 		            if(winner == -1){
-		            	System.out.println("loser");
+		            	try {
+							GameBoard.printLoser(g);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 		            } else if (winner == 1){
-		            	System.out.println("winner");
+		            	try {
+							GameBoard.printWinnner(g);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 		            }
 		            
 	            }
 	            else{ //beginning screen
 	            	
+	            	try {
+						GameBoard.printMasterMind(g);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 	            	g.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-	            	g.drawString("Welcome To", 0, 0);
+
 	            	//TODO Cool MasterMind
-	            	g.drawString("The computer will think of a secret code", 0, 10);
-	            	g.drawString("You try to guess what colored pegs are in the code and what order they are", 0, 25);
-	            	g.drawString("After you make a guess the result (feedback) will be displayed.", 0, 40);
-	            	g.drawString("The result consists of a black peg for each peg you have guessed exactly correct (color and position)", 0,55);
-	            	g.drawString("your guess. For each peg in the guess that is the correct color, but is out of position, you get a white peg", 0, 70);
-	            	g.drawString("You can choose the amount of pegs you need to choose with Size", 0, 85);
-	            	g.drawString("the amount of different colors available with Colors", 0, 100);
-	            	g.drawString("and the amount of guesses available to seceed in Guesses options below", 0, 115);
+	            	g.drawString("The computer will think of a secret code", 0, 120);
+	            	g.drawString("You try to guess what colored pegs are in the code and what order they are", 0, 140);
+	            	g.drawString("After you make a guess the result (feedback) will be displayed.", 0, 160);
+	            	g.drawString("The result consists of a black peg for each peg you have guessed exactly correct (color and position)", 0,180);
+	            	g.drawString("your guess. For each peg in the guess that is the correct color, but is out of position, you get a white peg", 0, 200);
+	            	g.drawString("You can choose the amount of pegs you need to choose with Size", 0, 220);
+	            	g.drawString("the amount of different colors available with Colors", 0, 240);
+	            	g.drawString("and the amount of guesses available to seceed in Guesses options below", 0, 250);
 //This is a text version of the classic board game Mastermind.
 //The computer will think of a secret code. The code consists of 4 colored pegs.
 //The pegs may be one of six colors: blue, green, orange, purple, red, or yellow. A color may appear
@@ -338,9 +355,9 @@ public class MasterMindDriver extends JFrame{
 	    	public void mouseClicked(MouseEvent e) {
 	    		if(start && winner == 0){
 	    			for (int i = 0; i < size; i++) {
-	    				int[] triangleX = { 20 + 35 * i - 3, 30 + 35 * i + 1, 40 + 35 * i + 11 };
-	    				int[] triangleUpY = { 510 - 6, 510 - 8 - 15, 510 - 6 };
-	    				int[] triangleDownY = { 510 + 16, 510 + 16 + 13, 510 + 16 };
+	    				int[] triangleX = { 85 + 35 * i - 3, 95 + 35 * i + 1, 105 + 35 * i + 11 };
+	    				int[] triangleUpY = { 540 - 6, 540 - 8 - 15, 540 - 6 };
+	    				int[] triangleDownY = { 540 + 16, 540 + 16 + 13, 540 + 16 };
 	    				if (inUpTriangle(triangleX, triangleUpY, e.getX(), e.getY())) {
 	    					System.out.println("Up Triangle " + i);
 	    					ColorPicker.colorChange(i, 1, colorNum);
