@@ -101,6 +101,6 @@ public class GameBoard {
 		g.setColor(PERU);
 		g.fillRect(0, 0, 500, 40);
 		g.setColor(Color.red.darker());
-		g.drawString("FAILURE", 10, 40);
+		g.drawString("FAILURE", 60, 40);
 	}
 }
