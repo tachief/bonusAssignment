@@ -7,7 +7,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+//Author: Mario and Tauseef
+//The point of this class is to draw and update the board and titles
+
 public class GameBoard {
+	//defines all the colors available in the game booard including the board itself
 	final static Color PERU = new Color(205, 133, 63);
 	final static Color SIENNA = new Color(160, 82, 45); 
 	final static Color PURPLE = new Color(160, 32, 240);
@@ -15,12 +19,14 @@ public class GameBoard {
 	final static Color NEW_ORANGE = new Color(255, 165, 0);
 	final static Color NEW_GREEN = new Color(69, 178, 69);
 	
+	//vairbles that define the board
 	private static int hintSize = 10;
 	private static int pegSize = 16;
 	private static int pegWidth = 24;
 	private static int startX = 85;
 	private static int startY = 60;
 	
+	//this method draws the board and all the updated pegs and hints
 	static void drawBoard(char[][] pegs, char[][] hints, int guesses, int size, Graphics g) throws Exception{
 		g.setColor(PERU);
 		g.fillRect(0, 0, 500, 700);
@@ -40,6 +46,7 @@ public class GameBoard {
 		g.drawString("Master Mind", 92, 40);
 	}
 	
+	//draws a single hint, used by drawBoard
 	static void drawHint(int x, int y, char color, Graphics g){
 		g.setColor(SIENNA);
 		g.fillOval(x, y, hintSize, hintSize);
@@ -55,6 +62,7 @@ public class GameBoard {
 		
 	}
 	
+	//draws a single Peg, used by drawBoard
 	static void drawPeg(int x, int y, char color, Graphics g){
 		g.setColor(SIENNA);
 		g.fillRoundRect(x, y, pegSize, pegWidth, 50, 50);
@@ -80,6 +88,7 @@ public class GameBoard {
 		g.drawRoundRect(x, y, pegSize, pegWidth, 50, 50);
 	}
 	
+	//prints Success if player wins
 	static void printWinnner(Graphics g) throws Exception
 	{
 		File fontFile = new File("Halo.ttf");
@@ -93,6 +102,7 @@ public class GameBoard {
 		g.drawString("SUCCESS", 90, 40);
 	}
 	
+	//Prints Faliure if player loses
 	static void printLoser(Graphics g) throws Exception
 	{
 		File fontFile = new File("Halo.ttf");
@@ -106,6 +116,7 @@ public class GameBoard {
 		g.drawString("FAILURE", 112, 40);
 	}
 	
+	//Prints Welcome to mastermind for the title
 	static void printMasterMind(Graphics g) throws Exception
 	{
 		File fontFile = new File("Halo.ttf");
@@ -116,6 +127,8 @@ public class GameBoard {
 	    g.drawString("Welcome To", 98, 40);
 	    g.drawString("Master Mind", 90, 80);
 	}
+	
+	//prints the solution if player failed
 	static void printSolution(Graphics g, int size, int guesses){
 		for(int i = 0; i < size; i++){
 			drawPeg(startX + i*27,startY + guesses*35, BackEnd.code[i], g);
