@@ -16,7 +16,7 @@ public class GameBoard {
 	private static int hintSize = 10;
 	private static int pegSize = 16;
 	private static int pegWidth = 24;
-	private static int startX = 25;
+	private static int startX = 85;
 	private static int startY = 60;
 	
 	static void drawBoard(char[][] pegs, char[][] hints, int guesses, int size, Graphics g) throws Exception{
@@ -35,7 +35,7 @@ public class GameBoard {
 	    Font halo40Pt = halo.deriveFont(40f);
 		g.setFont(halo40Pt);
 		
-		g.drawString("Master Mind", 85, 40);
+		g.drawString("Master Mind", 92, 40);
 	}
 	
 	static void drawHint(int x, int y, char color, Graphics g){
