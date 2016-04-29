@@ -33,7 +33,7 @@ public class GameBoard {
 	    FileInputStream in = new FileInputStream(fontFile);
 	    Font halo = Font.createFont(Font.TRUETYPE_FONT, in);
 	    Font halo30Pt = halo.deriveFont(30f);
-		//Font f = new Font("Test", Font.BOLD, 30);
+		Font f = new Font("Test", Font.BOLD, 30);
 		g.setFont(halo30Pt);
 		g.drawString("Master Mind", 95, 40);
 	}
