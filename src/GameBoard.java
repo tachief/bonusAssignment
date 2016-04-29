@@ -89,7 +89,6 @@ public class GameBoard {
 		g.fillRect(0, 0, 500, 40);
 		g.setColor(Color.white);
 		g.drawString("SUCCESS", 60, 40);
-		
 	}
 	
 	static void printLoser(Graphics g) throws Exception
